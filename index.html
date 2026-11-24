@@ -1,0 +1,1381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nisarga J | Portfolio</title>
+
+<style>
+:root {
+    --bg: #0b1020;
+    --panel: #131b30;
+    --panel2: #1a2540;
+    --text: #f1f5f9;
+    --muted: #aab5ca;
+    --accent: #a78bfa;
+    --accent2: #60a5fa;
+    --border: rgba(255,255,255,.09);
+}
+
+body.light {
+    --bg: #f3f5fb;
+    --panel: #ffffff;
+    --panel2: #edf0fa;
+    --text: #182033;
+    --muted: #5e687d;
+    --accent: #7045cf;
+    --accent2: #2563eb;
+    --border: rgba(20,30,60,.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    transition: background .3s, color .3s;
+}
+
+button, a {
+    font: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* BACKGROUND ANIMATION */
+
+.background-glow {
+    position: fixed;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: rgba(124,58,237,.12);
+    filter: blur(100px);
+    top: 10%;
+    right: 5%;
+    z-index: -1;
+    animation: floatGlow 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes floatGlow {
+    from { transform: translate(0,0); }
+    to { transform: translate(-80px,70px); }
+}
+
+/* NAVIGATION */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 245px;
+    height: 100vh;
+    padding: 32px 20px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.sidebar-subtitle {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 40px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.nav-links button {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    text-align: left;
+    padding: 13px 15px;
+    border-radius: 9px;
+    font-size: 14px;
+    transition: .25s;
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+    background: var(--panel2);
+    color: var(--accent);
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.theme-button {
+    margin-top: 18px;
+    padding: 10px 14px;
+    background: var(--panel2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+/* MAIN CONTENT */
+
+main {
+    margin-left: 245px;
+    padding: 55px 7%;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+    animation: pageEnter .35s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading small {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.section-heading h1,
+.section-heading h2 {
+    font-size: clamp(30px, 4vw, 42px);
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.accent {
+    color: var(--accent);
+}
+
+/* HOME */
+
+.home-content {
+    min-height: 78vh;
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.home-text .welcome {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.home-text h1 {
+    font-size: clamp(38px, 6vw, 66px);
+    margin: 15px 0;
+}
+
+.home-text h2 {
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.home-text p {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    padding: 13px 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: linear-gradient(120deg, #7c3aed, #4f46e5);
+    color: white;
+}
+
+.btn-outline {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(124,58,237,.2);
+}
+
+.profile-frame {
+    width: min(100%, 310px);
+    aspect-ratio: 4 / 5;
+    margin: auto;
+    padding: 9px;
+    border: 2px solid var(--accent);
+    border-radius: 25px;
+    box-shadow: 0 0 45px rgba(124,58,237,.18);
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 17px;
+}
+
+/* COMMON CARDS */
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.content-card {
+    max-width: 850px;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+.content-card h3 {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+/* EDUCATION */
+
+.education-card {
+    border-left: 3px solid var(--accent);
+    max-width: 700px;
+}
+
+.education-card h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.education-card p {
+    color: var(--muted);
+    margin: 7px 0;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 20px;
+}
+
+.skill-card h3 {
+    margin-bottom: 18px;
+}
+
+.skill-item {
+    margin-bottom: 18px;
+}
+
+.skill-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.skill-label span:last-child {
+    color: var(--muted);
+}
+
+.skill-track {
+    height: 8px;
+    background: var(--panel2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #7c3aed, #60a5fa);
+    border-radius: 20px;
+    transition: width 1.2s ease;
+}
+
+.skill-fill.animate {
+    width: var(--level);
+}
+
+/* PROJECTS */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 22px;
+}
+
+.project-card {
+    min-width: 0;
+}
+
+.project-preview {
+    min-height: 180px;
+    padding: 19px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 13px;
+    color: white;
+}
+
+.security-preview {
+    background: linear-gradient(135deg,#101b35,#312e81);
+}
+
+.agriculture-preview {
+    background: linear-gradient(135deg,#123c2b,#166534);
+}
+
+.health-preview {
+    background: linear-gradient(135deg,#172554,#164e63);
+}
+
+.preview-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.preview-subtitle {
+    font-size: 11px;
+    color: #dbeafe;
+}
+
+.preview-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.preview-stat {
+    background: rgba(255,255,255,.12);
+    padding: 12px;
+    border-radius: 9px;
+    flex: 1;
+}
+
+.preview-stat strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.preview-stat small {
+    font-size: 10px;
+    color: #dbeafe;
+}
+
+.preview-features {
+    display: flex;
+    gap: 9px;
+}
+
+.preview-feature {
+    flex: 1;
+    text-align: center;
+    background: rgba(255,255,255,.12);
+    padding: 12px 4px;
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.preview-feature small {
+    display: block;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+.preview-note {
+    font-size: 10px;
+    color: #dbeafe;
+}
+
+.project-number {
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.project-card h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.project-card > p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.tags span {
+    background: var(--panel2);
+    color: var(--accent);
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+}
+
+/* CERTIFICATES */
+
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 20px;
+}
+
+.certificate-card {
+    display: flex;
+    gap: 17px;
+    align-items: center;
+}
+
+.certificate-icon {
+    font-size: 30px;
+}
+
+.certificate-card h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.certificate-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* CONTACT */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.contact-item {
+    margin-bottom: 20px;
+}
+
+.contact-item small {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-item a,
+.contact-item p {
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.contact-form {
+    display: grid;
+    gap: 13px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel2);
+    color: var(--text);
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+}
+
+/* SOCIAL LINKS */
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 23px;
+}
+
+.social-links a {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--accent);
+    font-size: 13px;
+}
+
+.social-links a:hover {
+    background: var(--panel2);
+}
+
+/* BACK TO TOP */
+
+.back-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #111827;
+    font-size: 22px;
+    display: none;
+    z-index: 150;
+}
+
+.back-top.show {
+    display: block;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 55px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: sticky;
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .sidebar-subtitle,
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 8px 0 2px;
+        gap: 5px;
+    }
+
+    .nav-links button {
+        white-space: nowrap;
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 35px 6%;
+    }
+
+    .home-content {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding: 25px 0;
+    }
+
+    .profile-frame {
+        width: 230px;
+        grid-row: 1;
+    }
+}
+
+@media(max-width: 600px) {
+    .projects-grid,
+    .skills-grid,
+    .certificate-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 19px;
+    }
+
+    .home-text h1 {
+        font-size: 42px;
+    }
+
+    main {
+        padding: 28px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<!-- NAVIGATION -->
+<aside class="sidebar">
+
+    <div class="logo">NISARGA<span>.</span></div>
+    <div class="sidebar-subtitle">PERSONAL PORTFOLIO</div>
+
+    <nav class="nav-links">
+        <button class="active" data-page="home">⌂ Home</button>
+        <button data-page="about">♙ About</button>
+        <button data-page="education">▤ Education</button>
+        <button data-page="skills">⌘ Skills</button>
+        <button data-page="projects">▣ Projects</button>
+        <button data-page="certificates">★ Certificates</button>
+        <button data-page="contact">✉ Contact</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <p>Computer Science Engineering</p>
+        <p>© 2026 Nisarga J</p>
+        <button class="theme-button" id="themeToggle">☀ Light Mode</button>
+    </div>
+
+</aside>
+
+
+<main>
+
+    <!-- HOME PAGE -->
+    <section class="page active" id="home">
+
+        <div class="home-content">
+
+            <div class="home-text">
+                <div class="welcome">WELCOME TO MY PORTFOLIO</div>
+
+                <h1>Hi, I'm <span class="accent">Nisarga J</span></h1>
+
+                <h2>I'm a <span class="accent" id="typingText">Software Developer</span></h2>
+
+                <p>
+                    I am a Computer Science Engineering student interested
+                    in web development, programming and creating useful
+                    technology solutions. I enjoy learning new skills
+                    and building academic projects.
+                </p>
+
+                <div class="home-buttons">
+                    <button class="btn btn-primary" data-open="projects">
+                        View My Projects
+                    </button>
+
+                    <a href="Assests/Nisarga resume (2).pdf" download>
+                      <button class="btn btn-primary">
+                        Download Resume
+                    </button>
+                    </a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/Nisarga178"
+                       target="_blank">GitHub ↗</a>
+
+                    <a href="https://www.linkedin.com/Nisarga J"
+                       target="_blank">LinkedIn ↗</a>
+
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nisarganisarga011%40gmail.com"
+                       target="_blank">
+                       Email Me
+                      </a>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-frame">
+                <img src="Assests/assetsprofile.jpg.jpeg" alt="Nisarga">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT PAGE -->
+    <section class="page" id="about">
+
+        <div class="section-heading">
+            <small>GET TO KNOW ME</small>
+            <h1>About <span class="accent">Me</span></h1>
+            <p>A little introduction about myself.</p>
+        </div>
+
+        <div class="card content-card">
+            <h3>Who I Am</h3>
+
+            <p>
+                I am Nisarga J, a Computer Science and Engineering student
+                at Shridevi Institute of Engineering and Technology.
+                I am interested in web development and software development.
+            </p>
+
+            <br>
+
+            <p>
+                I have foundational knowledge of HTML, CSS, JavaScript
+                and Python, along with experience working on academic
+                projects related to web applications, healthcare and
+                machine learning.
+            </p>
+
+            <br>
+
+            <p>
+                My career goal is to become a software developer,
+                improve my technical skills and contribute to useful
+                real-world projects.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION PAGE -->
+    <section class="page" id="education">
+
+        <div class="section-heading">
+            <small>MY ACADEMIC JOURNEY</small>
+            <h1>My <span class="accent">Education</span></h1>
+            <p>My academic background.</p>
+        </div>
+
+        <div class="card education-card">
+            <div class="project-number">2027 / EXPECTED GRADUATION</div>
+
+            <h3>Bachelor of Engineering</h3>
+
+            <p>Computer Science and Engineering</p>
+
+            <p>Shridevi Institute of Engineering and Technology</p>
+
+            <p>Passing Year: 2027</p>
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS PAGE -->
+    <section class="page" id="skills">
+
+        <div class="section-heading">
+            <small>WHAT I KNOW</small>
+            <h1>Technical <span class="accent">Skills</span></h1>
+            <p>Technologies and programming skills used in my projects.</p>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="card skill-card">
+                <h3>Web Development</h3>
+
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>HTML</span><span>Project experience</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="--level:75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>CSS</span><span>Project experience</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="--level:70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>JavaScript</span><span>Foundational</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="--level:55%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card skill-card">
+                <h3>Programming & Tools</h3>
+
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Python</span><span>Foundational</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="--level:50%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Java</span><span>Project experience</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="--level:45%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span>Machine Learning</span><span>Academic project</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="--level:45%"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS PAGE -->
+    <section class="page" id="projects">
+
+        <div class="section-heading">
+            <small>WHAT I HAVE BUILT</small>
+            <h1>Featured <span class="accent">Projects</span></h1>
+            <p>Academic projects from my development journey.</p>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- INTENT GUARD -->
+            <div class="card project-card">
+
+                <div class="project-preview security-preview">
+                    <div class="preview-title">🛡️ INTENT GUARD</div>
+                    <div class="preview-subtitle">Security Monitoring Dashboard</div>
+
+                    <div class="preview-stats">
+                        <div class="preview-stat">
+                            <strong>AI</strong>
+                            <small>Behaviour Analysis</small>
+                        </div>
+                        <div class="preview-stat">
+                            <strong>ML</strong>
+                            <small>Threat Detection</small>
+                        </div>
+                    </div>
+
+                    <small class="preview-note">Illustrative project preview</small>
+                </div>
+
+                <div class="project-number">01 / AI & CYBERSECURITY</div>
+
+                <h3>Intent Guard</h3>
+
+                <p>
+                    An AI-based security system that analyzes user
+                    behaviour and detects unusual or suspicious activities.
+                </p>
+
+                <div class="tags">
+                    <span>Python</span>
+                    <span>Machine Learning</span>
+                    <span>Flask</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+            </div>
+
+
+            <!-- AGRICONNECT -->
+            <div class="card project-card">
+
+                <div class="project-preview agriculture-preview">
+                    <div class="preview-title">🌱 AgriConnect</div>
+                    <div class="preview-subtitle">Digital Support for Farmers</div>
+
+                    <div class="preview-features">
+                        <div class="preview-feature">🌾<small>Crops</small></div>
+                        <div class="preview-feature">🌦️<small>Weather</small></div>
+                        <div class="preview-feature">📈<small>Prices</small></div>
+                    </div>
+
+                    <small class="preview-note">Illustrative project preview</small>
+                </div>
+
+                <div class="project-number">02 / AGRICULTURE</div>
+
+                <h3>Agriculture Digital Platform</h3>
+
+                <p>
+                    A farmer-support platform designed to provide
+                    market prices, weather updates, expert advice
+                    and government scheme information.
+                </p>
+
+                <div class="tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Python</span>
+                </div>
+
+            </div>
+
+
+            <!-- HEALTH RISK PREDICTOR -->
+            <div class="card project-card">
+
+                <div class="project-preview health-preview">
+                    <div class="preview-title">💙 Health Risk Predictor</div>
+                    <div class="preview-subtitle">Health Assessment Interface</div>
+
+                    <div class="preview-stats">
+                        <div class="preview-stat">
+                            <strong>BMI</strong>
+                            <small>Health Indicator</small>
+                        </div>
+                        <div class="preview-stat">
+                            <strong>BP</strong>
+                            <small>Blood Pressure</small>
+                        </div>
+                    </div>
+
+                    <small class="preview-note">Illustrative project preview</small>
+                </div>
+
+                <div class="project-number">03 / HEALTHCARE</div>
+
+                <h3>Health Risk Predictor</h3>
+
+                <p>
+                    A web application that analyzes health and lifestyle
+                    information to estimate health risks and display
+                    recommendations.
+                </p>
+
+                <div class="tags">
+                    <span>Java</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATES PAGE -->
+    <section class="page" id="certificates">
+
+        <div class="section-heading">
+            <small>MY ACHIEVEMENTS</small>
+            <h1>Certificates & <span class="accent">Achievements</span></h1>
+            <p>Courses and learning experiences.</p>
+        </div>
+
+        <div class="certificate-grid">
+
+            <div class="card certificate-card">
+                <div class="certificate-icon">🏅</div>
+                <div>
+                    <h3>Introduction to Python Programming</h3>
+                    <p>Infosys Springboard</p>
+                </div>
+            </div>
+
+            <div class="card certificate-card">
+                <div class="certificate-icon">🎓</div>
+                <div>
+                    <h3>Computer Networks</h3>
+                    <p>Nptel</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card content-card" style="margin-top:22px">
+            <h3>Academic Achievements</h3>
+            <p>
+                Successfully completed multiple academic projects
+                related to web applications and AI concepts.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT PAGE -->
+    <section class="page" id="contact">
+
+        <div class="section-heading">
+            <small>GET IN TOUCH</small>
+            <h1>Contact <span class="accent">Me</span></h1>
+            <p>Feel free to contact me for opportunities and collaboration.</p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="card">
+
+                <div class="contact-item">
+                    <small>PHONE</small>
+                    <a href="tel:7090060110">7090060110</a>
+                </div>
+
+                <div class="contact-item">
+                    <small>EMAIL</small>
+                    <a href="mailto:nisarganisarga011@gmail.com">
+                        nisarganisarga011@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <small>GITHUB</small>
+                    <a href="https://github.com/Nisarga178"
+                       target="_blank">
+                        github.com/Nisarga178
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <small>LINKEDIN</small>
+                    <a href="https://www.linkedin.com/"
+                       target="_blank">
+                        LinkedIn.com/Nisarga J
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom:18px">Send a Message</h3>
+
+                <form class="contact-form" id="contactForm">
+
+                    <input type="text" id="senderName"
+                           placeholder="Your Name" required>
+
+                    <input type="email" id="nisarganisarga011"
+                           placeholder="nisarganisarga011" required>
+
+                    <textarea id="senderMessage"
+                              placeholder="Your Message"
+                              required></textarea>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message →
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        Designed and developed by Nisarga J | © 2026
+    </footer>
+
+</main>
+
+
+<button class="back-top" id="backTop" title="Back to top">↑</button>
+
+
+<script>
+
+// PAGE NAVIGATION
+
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll("[data-page]");
+
+function openPage(pageName) {
+
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const selectedPage = document.getElementById(pageName);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    navButtons.forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.page === pageName
+        );
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (pageName === "skills") {
+        animateSkills();
+    }
+}
+
+navButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        openPage(button.dataset.page);
+    });
+});
+
+document.querySelectorAll("[data-open]").forEach(button => {
+    button.addEventListener("click", () => {
+        openPage(button.dataset.open);
+    });
+});
+
+
+// TYPING ANIMATION
+
+const roles = [
+    "Software Developer",
+    "Web Developer",
+    "Tech Enthusiast"
+];
+
+let roleIndex = 0;
+let letterIndex = 0;
+let deleting = false;
+
+const typingText = document.getElementById("typingText");
+
+function typeRole() {
+
+    const currentRole = roles[roleIndex];
+
+    if (!deleting) {
+        typingText.textContent =
+            currentRole.substring(0, letterIndex + 1);
+
+        letterIndex++;
+
+        if (letterIndex === currentRole.length) {
+            deleting = true;
+            setTimeout(typeRole, 1200);
+            return;
+        }
+
+    } else {
+
+        typingText.textContent =
+            currentRole.substring(0, letterIndex - 1);
+
+        letterIndex--;
+
+        if (letterIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+        }
+    }
+
+    setTimeout(typeRole, deleting ? 45 : 85);
+}
+
+typeRole();
+
+
+// LIGHT AND DARK MODE
+
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light");
+
+    const lightMode =
+        document.body.classList.contains("light");
+
+    themeToggle.textContent =
+        lightMode ? "☾ Dark Mode" : "☀ Light Mode";
+
+    localStorage.setItem(
+        "portfolioTheme",
+        lightMode ? "light" : "dark"
+    );
+});
+
+if (localStorage.getItem("portfolioTheme") === "light") {
+    document.body.classList.add("light");
+    themeToggle.textContent = "☾ Dark Mode";
+}
+
+
+// SKILL ANIMATION
+
+function animateSkills() {
+
+    document.querySelectorAll(".skill-fill").forEach(bar => {
+        bar.classList.remove("animate");
+
+        setTimeout(() => {
+            bar.classList.add("animate");
+        }, 100);
+    });
+}
+
+
+// CONTACT FORM
+
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("senderName").value;
+    const email = document.getElementById("nisarganisarga011").value;
+    const message = document.getElementById("senderMessage").value;
+
+    const body = "Name: " + name +
+        "\nEmail: " + email +
+        "\n\nMessage: " + message;
+
+    const gmailURL =
+        "https://mail.google.com/mail/?view=cm&fs=1" +
+        "&to=nisarganisarga011%40gmail.com" +
+        "&su=" + encodeURIComponent("Portfolio Contact Message") +
+        "&body=" + encodeURIComponent(body);
+
+    window.open(gmailURL, "_blank");
+});
+
+
+
+// BACK TO TOP
+
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 250) {
+        backTop.classList.add("show");
+    } else {
+        backTop.classList.remove("show");
+    }
+
+});
+
+backTop.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+</script>
+
+</body>
+</html>
